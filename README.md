@@ -1,13 +1,40 @@
+# QR PIX GENERATOR
 
-# Usando Python para gerar QRCODE
+QRPIX GENERATOR é uma biblioteca Python projetada para simplificar a geração de QR Codes para pagamentos via Pix. Ela permite criar rapidamente códigos Pix personalizados
 
-Este projeto é um gerador de payload e QR Code para pagamentos PIX, utilizando a estrutura do BRCode. O código Python cria um payload de pagamento no formato exigido pelo sistema Pix e gera um QR Code correspondente, que pode ser escaneado para realizar transações.
+## Principais Caracteristicas
 
-O BR Code é o nome do padrão de QR Code, para fins de iniciação de pagamentos, adotado no Brasil, nos termos da Circular nº 3.682, de 4 de novembro de 2013.
+- Geração automática de payloads Pix válidos.
+- Suporte a qualquer tipo de chave Pix (CPF, CNPJ, e-mail ou telefone).
+- Geração de Payload Pix: cria um payload no formato QRCP-S, conforme especificações do sistema Pix.
+- Geração do Pix Copia e Cola: cria a linha digitável a partir do payload gerado, o codigo do Pix Copia e Cola é mostrado no saida.
+- Leve, independente e fácil de integrar a projetos Python existentes.
 
-O Pix se consolidou como o meio de pagamento mais popular do Brasil em 2023 com quase 42 bilhões de transações.
+## Instalação 
 
+Instale a versão mais recente diretamente do PyPI usando pip:
 
+```sh
+pip install qrpix
+```
+
+## Uso básico
+
+```sh
+from payload import Payload
+
+payload = Payload(
+    nome="Maria José",
+    chavepix="+5584994226558",
+    valor="0.00",
+    cidade="BRASIL",
+    txtId="TesteQRPIX"
+)
+
+codigo_pix = payload.gerarPayload()
+print("Pix Copia e Cola:", codigo_pix)
+
+```
 
 ## Referência
 
@@ -16,11 +43,7 @@ O Pix se consolidou como o meio de pagamento mais popular do Brasil em 2023 com 
  - [Pix EMV QRCode Tester](https://openpix.com.br/qrcode/scanner/)
 
 
- 
+## Tecnologias Utilizadas
 
+![Python](https://img.shields.io/badge/Python_3.11+-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
-## Funcionalidades
-
-- Geração de Payload Pix: cria um payload no formato QRCP-S, conforme especificações do sistema Pix.
-- Geração de QR Code: cria um QR Code a partir do payload gerado e salva a imagem em um diretório especificado.
-- Geração do Pix Copia e Cola: cria a linha digitável a partir do payload gerado, o codigo do Pix Copia e Cola é mostrado no saida.
